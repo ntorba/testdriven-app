@@ -1,5 +1,5 @@
 # services/users/project/tests/test_users.py
-
+# new comment for build 
 
 import json
 import unittest
@@ -14,6 +14,7 @@ def add_user(username, email):
     db.session.add(user)
     db.session.commit()
     return user
+
 
 class TestUserService(BaseTestCase):
     """Tests for the Users Service."""
@@ -32,7 +33,7 @@ class TestUserService(BaseTestCase):
             response = self.client.post(
                 '/users',
                 data=json.dumps({
-                    'username':'nicky6',
+                    'username': 'nicky6',
                     'email': 'nicky6@yahoo.com'
                 }),
                 content_type='application/json',
@@ -165,14 +166,13 @@ class TestUserService(BaseTestCase):
     def test_main_add_user(self):
         """ensure a new user can be added to the database"""
         with self.client:
-            response = self.client.post('/',data=dict(username='michael', email='michael@sonotreal.com'),follow_redirects=True)
+            response = self.client.post('/', data=dict(username='michael', email='michael@sonotreal.com'), follow_redirects=True)
             print('FUCK')
             print(response)
             self.assertEqual(response.status_code, 200)
             self.assertIn(b'All Users', response.data)
             self.assertNotIn(b'<p>No users!</p>', response.data)
             self.assertIn(b'michael', response.data)
-
 
 
 if __name__ == '__main__':
