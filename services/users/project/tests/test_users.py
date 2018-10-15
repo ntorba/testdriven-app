@@ -1,5 +1,5 @@
 # services/users/project/tests/test_users.py
-# new comment for build 
+# new comment for build
 
 import json
 import unittest
@@ -137,7 +137,7 @@ class TestUserService(BaseTestCase):
             response = self.client.get('/users')
             data = json.loads(response.data.decode())
             self.assertEqual(response.status_code, 200)
-            self.assertEqual(len(data['data']['users']),2)
+            self.assertEqual(len(data['data']['users']), 2)
             self.assertIn('nicky6', data['data']['users'][0]['username'])
             self.assertIn('nicky6@yahoo.com', data['data']['users'][0]['email'])
             self.assertIn('jawnboy', data['data']['users'][1]['username'])
